@@ -79,8 +79,8 @@ app.put('/charities/:id', (req, res) => {
 })
 
 // DELETE
-app.delete('charities/:id', function(req, res) => {
-    console.log('DELETE charity')
+app.delete('/charities/:id', function(req, res) {
+    console.log('Charity deleted')
     Charity.findByIdAndRemove(req.params.id).then((charity) => {
         res.redirect('/')
     }).catch((err => {
