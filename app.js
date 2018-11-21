@@ -8,9 +8,6 @@ const mongoose = require('mongoose');
 const charities = require('./controllers/charities')
 const Charity = require('./models/charity')
 
-mongoose.connect('mongodb://localhost/charity-term2');
-
-
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -19,8 +16,11 @@ app.use(methodOverride('_method'))
 
 charities(app)
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000
+app.listen(port, () => {
   console.log('App listening on port 3000!')
+  const db = process.env.MONGODB_URI || 'mongodb://localhost/charity-term2';
+  mongoose.connect(db)
 })
 
 module.exports = app
