@@ -40,12 +40,24 @@ app.get('/charities/new', (req, res) => {
 app.post('/charities', (req, res) => {
     Charity.create(req.body).then((charity) => {
         console.log(charity)
-        res.redirect('/')
+        res.redirect(`/charities/${charity.id}`)
     })
     .catch((err) => {
         console.log(err.message)
     })
 })
+
+//SHOW
+app.get('/charities/:id', (req, res) => {
+    Charity.findById(req.params.id).then((charity) => {
+        res.render('charities-show', {charity: charity})
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+})
+
+/
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
