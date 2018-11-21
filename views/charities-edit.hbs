@@ -1,9 +1,11 @@
-<form method="POST" action="/charities/{{charity._id}}?_method=PUT">
-  {{> charities-form}}
-
-  <!-- BUTTON -->
-  <p>
-    <button type="submit">Save Charity</button>
-  </p>
-
-</form>
+<div class="row">
+    <div clas="col-sm-6 col-sm-offset-3">
+        <form method="POST" action="/charities/{{charity._id}}?_method=PUT">
+            {{> charities-form}}
+            <!-- BUTTON -->
+            <div>
+                <button type="submit">Save Charity</button>
+            </div>
+        </form>
+    </div>
+</div>

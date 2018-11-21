@@ -1,11 +1,15 @@
 <a href="/"> Back to Home </a>
 
-<h1>{{charity.org}}</h1>
 
-<p><a href="/charities/{{charity._id}}/edit"> Edit </a></p>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>{{charity.org}}</h1>
+        <p><a href="/charities/{{charity._id}}/edit"> Edit </a></p>
 
-<p>
-    <form method="POST" action="/charities/{{charity._id}}?_method=DELETE">
-        <button type="submit"> Delete </button>
-    </form>
-</p>
+        <p>
+            <form method="POST" action="/charities/{{charity._id}}?_method=DELETE">
+                <button type="submit"> Delete </button>
+            </form>
+        </p>
+    </div>
+</div>
