@@ -1,4 +1,5 @@
 const Charity = require('../models/charity')
+const Donation = require('../models/donation')
 
 function charities (app) {
 
@@ -33,8 +34,11 @@ function charities (app) {
     app.get('/charities/:id', (req, res) => {
         Charity.findById(req.params.id)
             .then((charity) => {
-                res.render('charities-show', {charity: charity})
-            })
+                Donation.find({ charityId: req.params.id})
+                    .then(donations => {
+                        res.render('charities-show', {charity: charity, donations: donations})
+                    })
+                })
             .catch((err) => {
                 console.log(err.message)
         })

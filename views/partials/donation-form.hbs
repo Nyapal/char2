@@ -1,22 +1,23 @@
-<form>
+<form action="/charities/donations" method="POST">
+    <input type="hidden" value="{{charity._id}}" name="charityId">
     <fieldset>
         <legend> Add a Donation </legend>
         <!-- DATE -->
         <div class="form-group">
-            <label for="donation-date"> Date </label> <br>
-            <input class="form-control" id="donation-date" type="date" name="date"/>
+            <label for="date"> Date </label> <br>
+            <input class="form-control" id="date" type="date" name="date"/>
         </div>
-        <!-- DESCRIPTION -->
+        <!-- AMOUNT -->
         <div class="form-group">
-          <label for="donation-amount">Description</label><br>
-          <input class="form-control" id="donation-amount" type="number" name="donation-amount" min="1" placeholder="Donation Amount"/>
+          <label for="amount">Amount</label><br>
+          <input class="form-control" id="amount" type="number" name="amount" min="1" placeholder="Enter Donation Amount"/>
         </div>
         <!-- NOTES -->
         <div class="form-group">
-          <label for="donation-notes">Note</label><br>
+          <label for="notes">Notes</label><br>
           <textarea class="form-control"
-          id="donation-notes"
-          name="content"
+          id="notes"
+          name="notes"
           rows="5"
           placeholder="Notes..."/></textarea>
         </div>

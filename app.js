@@ -6,7 +6,10 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose');
 
 const charities = require('./controllers/charities')
+const donations = require('./controllers/donations')
+
 const Charity = require('./models/charity')
+const Donation = require('./models/donation')
 
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
@@ -15,6 +18,7 @@ app.use(methodOverride('_method'))
 
 
 charities(app)
+donations(app)
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
