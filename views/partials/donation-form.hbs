@@ -1,0 +1,28 @@
+<form>
+    <fieldset>
+        <legend> Add a Donation </legend>
+        <!-- DATE -->
+        <div class="form-group">
+            <label for="donation-date"> Date </label> <br>
+            <input class="form-control" id="donation-date" type="date" name="date"/>
+        </div>
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+          <label for="donation-amount">Description</label><br>
+          <input class="form-control" id="donation-amount" type="number" name="donation-amount" min="1" placeholder="Donation Amount"/>
+        </div>
+        <!-- NOTES -->
+        <div class="form-group">
+          <label for="donation-notes">Note</label><br>
+          <textarea class="form-control"
+          id="donation-notes"
+          name="content"
+          rows="5"
+          placeholder="Notes..."/></textarea>
+        </div>
+    </fieldset>
+    <!-- BUTTON -->
+    <div class='form-group'>
+        <button class="btn btn-primary" type="submit"> Add Donation </button>
+    </div>
+</form>
