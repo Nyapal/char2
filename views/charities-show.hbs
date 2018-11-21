@@ -3,3 +3,9 @@
 <h1>{{charity.org}}</h1>
 
 <p><a href="/charities/{{charity._id}}/edit"> Edit </a></p>
+
+<p>
+    <form method="POST" action="/charities/{{charity._id}}?_method=DELETE">
+        <button type="submit"> Delete </button>
+    </form>
+</p>
