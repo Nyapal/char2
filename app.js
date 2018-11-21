@@ -1,6 +1,7 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/charity-term2');
@@ -11,11 +12,15 @@ const Charity = mongoose.model('Charity', {
 
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
+app.use(bodyParser.urlencoded({ extended: true}));
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+// OUR MOCK ARRAY OF PROJECTS
+let charities = [
+    { org: "SF Childrens Hospital"},
+    { org: "Orange Juice for All"}
+]
 
+//INDEX
 app.get('/', (req, res) => {
   Charity.find()
     .then(charities => {
@@ -26,17 +31,20 @@ app.get('/', (req, res) => {
     })
 })
 
-// app.js
+// NEW
+app.get('/charities/new', (req, res) => {
+  res.render('charities-new', {});
+})
 
-// OUR MOCK ARRAY OF PROJECTS
-let charities = [
-  { org: "SF Childrens Hospital"},
-  { org: "Orange Juice for All"}
-]
-
-// INDEX
-app.get('/charities', (req, res) => {
-  res.render('charities-index', { charities: charities });
+//CREATE
+app.post('/charities', (req, res) => {
+    Charity.create(req.body).then((charity) => {
+        console.log(charity)
+        res.redirect('/')
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
 })
 
 app.listen(3000, () => {
